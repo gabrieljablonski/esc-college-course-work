@@ -36,23 +36,27 @@ CHIP Memory {
 	* 	     1      |      1      | Keyboard
 	*/
 	
+	And16(a[0..14]=address, a[15]=true, b=true, out=nop1,
+		  out[13..14]=memSel, out[0..13]=ramAddress,
+		  out[0..12]=screenAddress);
+	
 	// Which device to load
-    DMux4Way(in=load, sel=address[13..14],
-			 a=loadRAM1, b=loadRAM2, c=loadScreen, d=nop);
+    DMux4Way(in=load, sel=memSel,
+			 a=loadRAM1, b=loadRAM2, c=loadScreen, d=nop2);
 	
 	Or(a=loadRAM1, b=loadRAM2, out=loadRAM);
 	
 	RAM16K(in=in, load=loadRAM,
-		   address=address[0..13], out=outRAM);
+		   address=ramAddress, out=outRAM);
 	
 	Screen(in=in, load=loadScreen,
-		   address=address[0..12], out=outScreen);
+		   address=screenAddress, out=outScreen);
 
 	Keyboard(out=outKeyboard);
 	
 	// Which device to output
 	Mux4Way16(a=outRAM, b=outRAM, c=outScreen, d=outKeyboard,
-			  sel=address[13..14], out=out);
+			  sel=memSel, out=out);
 }
 
 
