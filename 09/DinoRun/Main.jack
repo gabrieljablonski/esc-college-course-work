@@ -1,0 +1,9 @@
+class Main {
+    function void main() {
+        var DinoRunGame game;
+        let game = DinoRunGame.new(10);
+        do game.run();
+        do game.dispose();
+        return;
+    }
+}

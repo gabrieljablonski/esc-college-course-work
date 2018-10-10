@@ -1,0 +1,110 @@
+function Cactus.new 0
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 1
+push argument 1
+pop this 2
+push argument 2
+pop this 3
+push constant 511
+pop this 0
+push pointer 0
+call Cactus.draw 1
+pop temp 0
+push pointer 0
+return
+function Cactus.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Cactus.getCurrentPosition 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Cactus.getHeight 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Cactus.getWidth 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Cactus.draw 1
+push argument 0
+pop pointer 0
+push this 0
+push this 2
+add
+push constant 511
+call Math.min 2
+pop local 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 3
+push this 1
+sub
+push constant 1
+sub
+push local 0
+push this 3
+push constant 1
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Cactus.erase 1
+push argument 0
+pop pointer 0
+push this 0
+push this 2
+add
+push constant 511
+call Math.min 2
+pop local 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push this 3
+push this 1
+sub
+push constant 1
+sub
+push local 0
+push this 3
+push constant 1
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Cactus.move 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Cactus.erase 1
+pop temp 0
+push this 0
+push argument 1
+sub
+push constant 0
+call Math.max 2
+pop this 0
+push pointer 0
+call Cactus.draw 1
+pop temp 0
+push constant 0
+return

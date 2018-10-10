@@ -1,0 +1,66 @@
+class Cactus{
+	field int currentPosition;
+	field int height;
+	field int width;
+	
+	field int GROUND_HEIGHT;
+	
+	constructor Cactus new(int AHeight, int AWidth, int groundHeight){
+		let height = AHeight;
+		let width = AWidth;
+		
+		let GROUND_HEIGHT = groundHeight;
+		
+		let currentPosition = 511;
+		
+		do draw();
+		
+		return this;
+	}
+	
+	method void dispose(){
+		do Memory.deAlloc(this);
+		return;
+	}
+	
+	method int getCurrentPosition(){
+		return currentPosition;
+	}
+	
+	method int getHeight(){
+		return height;
+	}
+	
+	method int getWidth(){
+		return width;
+	}
+	
+	method void draw(){
+		var int rightBorder;
+		let rightBorder = Math.min(currentPosition + width, 511);
+		
+		do Screen.setColor(true);
+		do Screen.drawRectangle(currentPosition, GROUND_HEIGHT-height-1, rightBorder, GROUND_HEIGHT-1);
+		
+		return;
+	}
+	
+	method void erase(){
+		var int rightBorder;
+		let rightBorder = Math.min(currentPosition + width, 511);
+	
+		do Screen.setColor(false);
+		do Screen.drawRectangle(currentPosition, GROUND_HEIGHT-height-1, rightBorder, GROUND_HEIGHT-1);
+		
+		return;
+	}
+	
+	method void move(int speed){
+		do erase();
+		let currentPosition = Math.max(currentPosition - speed, 0);
+		
+		do draw();
+		
+		return;
+	}
+}
