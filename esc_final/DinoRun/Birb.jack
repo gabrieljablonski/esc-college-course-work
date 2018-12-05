@@ -20,9 +20,10 @@ class Birb{
 		let currentPosition = 511 - BIRB_WIDTH;
 		
 		let drawCounter = 0;
-		let MAX_COUNTER = 14;
+		let MAX_COUNTER = 10;
 		
 		do draw();
+		
 		return this;
 	}
 	
@@ -148,6 +149,7 @@ class Birb{
 	
 	method void move(int speed){
 		do erase();
+		
 		let currentPosition = Math.max(currentPosition - speed, 0);
 		
 		do draw();

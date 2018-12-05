@@ -34,7 +34,7 @@
  * 
 */ 
 
-class LCGRandom { 
+class LCGRandom {
 	static int seed; 
     static int A; 
     static int M; 

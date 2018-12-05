@@ -1,6 +1,7 @@
 class Dino{
 	field int x;
 	field int currentHeight;
+	field int startHeight;
 	field int jumpStrength;
 	field int weight;
 
@@ -12,15 +13,16 @@ class Dino{
 	field int DINO_HEIGHT;
 	field int DINO_WIDTH;
 
-	constructor Dino new(int startX, int _groundHeight, int jStrength, int weight_){
+	constructor Dino new(int startX, int _groundHeight, int jStrength, int _weight){
 		let groundHeight = _groundHeight;
 		let DINO_HEIGHT = 16;
 		let DINO_WIDTH = 16;
 
 		let x = startX;
-		let currentHeight = groundHeight - DINO_HEIGHT - 1;
+		let startHeight = groundHeight - DINO_HEIGHT - 1
+		let currentHeight = startWeight;
 		let jumpStrength = jStrength;
-		let weight = weight_;
+		let weight = _weight;
 
 		let jumping = false;
 		let goingUp = false;
@@ -163,7 +165,6 @@ class Dino{
 	}
 
 	method void startJump(){
-	
 		if(~jumping){
 			let jumping = true;
 			let goingUp = true;
@@ -178,18 +179,17 @@ class Dino{
 		if(goingUp){
 			let currentHeight = currentHeight - currentJumpSpeed;
 			let currentJumpSpeed = currentJumpSpeed - weight;
-			
 		}
 		else{
 			let currentHeight = currentHeight + currentJumpSpeed;
 			let currentJumpSpeed = currentJumpSpeed + weight;
 		}
 
-		if(currentJumpSpeed = 0){
+		if(~(currentJumpSpeed > 0)){
 			let goingUp = false;
 		}
-		if(currentHeight > (groundHeight - DINO_HEIGHT - 1)){
-			let currentHeight = groundHeight - DINO_HEIGHT - 1;
+		if(currentHeight > startHeight){
+			let currentHeight = startHeight;
 			let jumping = false;
 			let currentJumpSpeed = 0;
 		}

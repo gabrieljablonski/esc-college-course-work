@@ -76,10 +76,12 @@ class DinoRunGame{
 		
 		if(obstacle_types[0] = 0){
 			let c = obstacles[0];
+			do c.erase();
 			do c.dispose();
 		}
 		else{
 			let b = obstacles[0];
+			do b.erase();
 			do b.dispose();
 		}
 		
@@ -92,8 +94,6 @@ class DinoRunGame{
 		let obstacle_types[n] = null;
 		
 		let n_obstacles = n_obstacles - 1;
-		
-		do newObstacle();
 		
 		return;
 	}
@@ -117,7 +117,7 @@ class DinoRunGame{
 			else{
 				let obstacles[n_obstacles] = Birb.new(BIRB_HEIGHT_TO_GROUND, groundHeight);
 			}
-		
+			
 			let obstacle_types[n_obstacles] = obstacle_type;
 			let n_obstacles = n_obstacles + 1;
 		}
@@ -143,7 +143,6 @@ class DinoRunGame{
 				
 				if(c.getCurrentPosition() = 0){
 					let cycle = true;
-					do c.erase();
 				}
 			}
 			else{
@@ -152,7 +151,6 @@ class DinoRunGame{
 				
 				if(b.getCurrentPosition() = 0){
 					let cycle = true;
-					do b.erase();
 				}
 			}
 			let n = n + 1;
@@ -160,6 +158,7 @@ class DinoRunGame{
 		
 		if(cycle){
 			do cycleObstacle();
+			do newObstacle();
 			let score = score + 1;
 			
 			if(score < 101){
@@ -174,6 +173,7 @@ class DinoRunGame{
 				do Output.backSpace();
 				let backspaces = backspaces - 1;
 			}
+			
 			do Output.printInt(score);
 			
 			if(Utility.modulo(score, 2) = 0){			
@@ -186,7 +186,6 @@ class DinoRunGame{
 		}
 		
 		if(n_obstacles > 0){
-
 			if(obstacle_types[0] = 0){
 				if(dino.isHitCactus(obstacles[0])){
 					let gOver = true;
@@ -220,7 +219,7 @@ class DinoRunGame{
 		do Output.printString("        ");
 		
 		do Output.moveCursor(0, 32);
-		do Output.printInt(0);
+		do Output.printInt(score);
 		
 		while(~exit){
 		
@@ -242,11 +241,11 @@ class DinoRunGame{
 				do dino.startJump();
 			}
 			
-			if(key = 131){
+			if(key = 131){  // up arrow
 				do dino.increaseJumpStrength();
 			}
 			
-			if(key = 133){
+			if(key = 133){ // down arrow
 				do dino.decreaseJumpStrength();
 			}
 			

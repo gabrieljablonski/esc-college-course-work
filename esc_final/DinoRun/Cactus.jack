@@ -8,11 +8,10 @@ class Cactus{
 	constructor Cactus new(int _groundHeight){
 		let groundHeight = _groundHeight;
 		
-		let CACTUS_WIDTH = 32;
+		let CACTUS_WIDTH = 16; // era 32
 		let CACTUS_HEIGHT = 16; 
 		
 		let currentPosition = 511 - CACTUS_WIDTH;
-		
 		
 		do draw();
 		
@@ -34,7 +33,7 @@ class Cactus{
 		var int addr;
 		
 		let x = currentPosition;
-		let y = groundHeight - CACTUS_HEIGHT - 1; // so it isn't drawn inside the ground
+		let y = groundHeight - CACTUS_HEIGHT - 1;
 		
 		let location = Utility.xyToScreenMap(x, y);
 		let addr = 16384+location;
