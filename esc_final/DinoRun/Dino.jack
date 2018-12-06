@@ -19,8 +19,8 @@ class Dino{
 		let DINO_WIDTH = 16;
 
 		let x = startX;
-		let startHeight = groundHeight - DINO_HEIGHT - 1
-		let currentHeight = startWeight;
+		let startHeight = groundHeight - DINO_HEIGHT - 1;
+		let currentHeight = startHeight;
 		let jumpStrength = jStrength;
 		let weight = _weight;
 

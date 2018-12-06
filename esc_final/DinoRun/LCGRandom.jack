@@ -73,10 +73,10 @@ class LCGRandom {
 
 		let scale = (M / (high - low + 1));
 		let rand = (LCGRandom.rand() / scale) + low;
-
-		if(rand>high){
-			return high;
-		}
+		
+		while (rand > high) {
+			let rand = (LCGRandom.rand() / scale) + low;
+        }
 		return rand;
-    } 
+    }
 }

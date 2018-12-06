@@ -1,0 +1,11 @@
+class Main{
+	
+	function void main(){
+		
+		do DrawTest.fullDrawTest();
+		
+		return;
+		
+	}
+
+}
