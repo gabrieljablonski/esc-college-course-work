@@ -13,4 +13,4 @@ Subjects covered:
 * Compilers
 * Operating Systems
 
-Final project: A clone of the Chrome Browser game **Dino Run** (chrome://dino), developed in the Jack programming language for the Hack computer.
+Final project: A clone of the Chrome Browser game **Dino Run** (chrome://dino), developed in the Jack programming language for the Hack computer. Demo [video](https://www.youtube.com/watch?v=2Li___2DTTw "Demo video for the Dino Run game") of the game.
