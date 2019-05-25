@@ -12,3 +12,5 @@ Subjects covered:
 * High-level Languages
 * Compilers
 * Operating Systems
+
+Final project: A clone of the Chrome Browser game **Dino Run** (chrome://dino), developed in the Jack programming language for the Hack computer.
